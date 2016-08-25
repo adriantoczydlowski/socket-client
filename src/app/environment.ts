@@ -3,5 +3,7 @@
 // The build system defaults to the dev environment
 
 export const environment = {
-  production: false
+  production: false,
+  socketURL: 'ws://localhost:8081',
+  tickerSearchURL: 'http://localhost:3000'
 };
