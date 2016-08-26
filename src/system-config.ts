@@ -34,6 +34,7 @@ const barrels: string[] = [
   'app/services/rx-web-socket',
   'app/services/ticker',
   'app/services/ticker-loader',
+  'app/graph',
   /** @cli-barrel */
 ];
 
