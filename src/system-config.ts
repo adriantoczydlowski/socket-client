@@ -22,6 +22,7 @@ const barrels: string[] = [
   '@angular/router',
   '@angular/platform-browser',
   '@angular/platform-browser-dynamic',
+  '@angular/forms',
 
   // Thirdparty barrels.
   'rxjs',
@@ -29,6 +30,10 @@ const barrels: string[] = [
   // App specific barrels.
   'app',
   'app/shared',
+  'app/type-head',
+  'app/services/rx-web-socket',
+  'app/services/ticker',
+  'app/services/ticker-loader',
   /** @cli-barrel */
 ];
 

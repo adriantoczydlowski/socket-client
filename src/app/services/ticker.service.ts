@@ -1,5 +1,16 @@
 import { Inject, Injectable } from '@angular/core';
-import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import { Observable  } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/scan';
+import 'rxjs/add/observable/timer';
+import 'rxjs/add/operator/retry';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/share';
+import 'rxjs/add/operator/retryWhen';
 import { RxWebSocketService } from './rx-web-socket.service';
 import { environment } from '../../app/';
 
@@ -22,8 +33,7 @@ export class TickerService {
   // subscribes to it can see the most recent value it's emitted.
   connectionState = new BehaviorSubject<ConnectionStates>(ConnectionStates.CONNECTING);
 
-  constructor(@Inject(environment.socketURL) url: string,
-              public socket: RxWebSocketService) {
+  constructor(public socket: RxWebSocketService) {
     const connectionState = this.connectionState;
 
     // subscribe to events from our RxWebSocket to oupdate connection status
@@ -40,7 +50,7 @@ export class TickerService {
     }
   }
 
-  getTicket(symbol: string): Observable<TickerMessage> {
+  getTicker(symbol: string): Observable<TickerMessage> {
     const socket = this.socket;
 
     // create a custom observable to return by wrapping
@@ -50,6 +60,7 @@ export class TickerService {
 
       // first subscribe to the socket, filtering out
       // only the messages we care about
+      console.log('subscriber')
       const msgSub = socket.out
         .filter(d => d.symbol === symbol)
         .subscribe(subscriber);

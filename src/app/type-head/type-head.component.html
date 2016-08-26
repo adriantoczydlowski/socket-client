@@ -1,0 +1,19 @@
+<div class="input-group" [formGroup]="myGroup">
+  <span class="input-group-addon" id="symbol-input">DRG</span>
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Search for DRG..."
+    aria-describedby="symbol-input"
+    name="symbol"
+    formControlName="searchText">
+</div>
+<table class="table table-striped">
+  <tbody>
+    <tr *ngFor="let tick of tickers | async">
+      <td>{{tick.ms_drg}}</td>
+      <td>{{tick.title}}</td>
+      <td><button type="button" class="btn btn-primary" (click)="onSelect(tick)">Toogl</button></td>
+    </tr>
+  </tbody>
+</table>

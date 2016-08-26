@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Subject, Observable, Observer, Subscriber, Subscription  } from 'rxjs';
+import { Observable  } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { Observer } from 'rxjs/Observer';
+import { Subscription  } from 'rxjs/Subscription';
+import { Subscriber } from 'rxjs/Subscriber';
+import 'rxjs/add/operator/share';
 
 @Injectable()
 export class RxWebSocketService {
@@ -13,11 +18,10 @@ export class RxWebSocketService {
   _out: Observable<any>;
   _in: Observer<any>;
 
-  constructor(private url: string,
-              private WebSocketCtor: { new(url:string): WebSocket } = WebSocket) {}
+  constructor(private WebSocketCtor: { new(url:string): WebSocket } = WebSocket) {}
   
-  static create(url: string, WebSocketCtor: { new(url:string): WebSocket } = WebSocket): RxWebSocketService {
-    return new RxWebSocketService(url, WebSocketCtor);
+  static create(WebSocketCtor: { new(url:string): WebSocket } = WebSocket): RxWebSocketService {
+    return new RxWebSocketService(WebSocketCtor);
   }
 
   selector(e: MessageEvent) {
@@ -31,7 +35,7 @@ export class RxWebSocketService {
           this.willOpen();
         }
 
-        let socket = this.socket = new this.WebSocketCtor(this.url);
+        let socket = this.socket = new this.WebSocketCtor('ws://localhost:8081');
 
         socket.onopen = (e) => {
           this.flushMessages();
