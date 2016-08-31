@@ -49,10 +49,7 @@ export class TypeHeadComponent implements OnInit {
       // service and switch to that
       // observable. That means unsubscribing from any previous HTTP request
       // (cancelling it), and subscribing to the newly returned on here.
-      .switchMap((val: any) => {
-      console.log('qwe', val)
-      return tickerLoader.load(val.searchText)
-      })
+      .switchMap((val: any) => tickerLoader.load(val.searchText))
       // send an empty array to tickers whenever clear emits by
       // merging in a the stream of clear events mapped to an
       // empty array.

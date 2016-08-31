@@ -60,9 +60,12 @@ export class TickerService {
 
       // first subscribe to the socket, filtering out
       // only the messages we care about
-      console.log('subscriber')
+      console.log('subscriber', symbol)
       const msgSub = socket.out
-        .filter(d => d.symbol === symbol)
+        .filter(d => {
+          console.log('d.symbol', d.symbol, symbol)
+          return d.symbol === symbol
+        })
         .subscribe(subscriber);
 
       // now send a message over the socket to tell the server
