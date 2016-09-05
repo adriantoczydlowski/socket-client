@@ -1,2 +1,2 @@
-export * from './environment';
-export * from './socket-client.component';
+export * from './app.component';
+export * from './app.module';

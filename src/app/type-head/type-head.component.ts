@@ -14,7 +14,6 @@ import 'rxjs/add/operator/mapTo';
 import { TickerLoaderService } from '../services/ticker-loader.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'app-type-head',
   templateUrl: 'type-head.component.html',
   styleUrls: ['type-head.component.css'],

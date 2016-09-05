@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/retryWhen';
 import { RxWebSocketService } from './rx-web-socket.service';
-import { environment } from '../../app/';
+import { environment } from '../../app/environment';
 
 export enum ConnectionStates {
   CONNECTING,

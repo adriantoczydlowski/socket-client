@@ -1,0 +1,11 @@
+<div>
+  <div class="container">
+    <app-type-head (selected)="onSelect($event)"></app-type-head>
+  </div>
+  <div class="container">
+    <div class="row" *ngFor="let ticker of tickers">
+      <button (click)="removeTicker(ticker.symbol)" class="col-md-2 btn btn-default">Close</button>
+      <app-graph [ticker]="ticker" class="col-md-8"></app-graph>
+    </div>
+  </div>
+</div>
